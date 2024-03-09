@@ -43,13 +43,13 @@ class DotDrawer {
     line.style.top = `${this.y}px`;
     const length = Math.sqrt((x2 - this.x) ** 2 + (y2 - this.y) ** 2);
     let opacity
-    if (length >= 700) { opacity = 0 } else if
-      (length > 600) { opacity = 0.01 } else if
-      (length > 500) { opacity = 0.02 } else if
-      (length > 400) { opacity = 0.05 } else if
-      (length > 300) { opacity = 0.1 } else if
-      (length > 200) { opacity = 0.2 } else if
-      (length > 100) { opacity = 0.3 } else if
+    if (length >= 210) { opacity = 0 } else if
+      (length > 180) { opacity = 0.01 } else if
+      (length > 150) { opacity = 0.02 } else if
+      (length > 120) { opacity = 0.05 } else if
+      (length > 90) { opacity = 0.1 } else if
+      (length > 60) { opacity = 0.2 } else if
+      (length > 30) { opacity = 0.3 } else if
       (length > 0) { opacity = 0.4 }
     line.style.width = `${length}px`;
     line.style.transformOrigin = 'left';
@@ -87,7 +87,7 @@ const emitDots = () => {
     for (let i = 40; i <= 300; i += 50) {
       const variableName = 'dot' + id;
       // props:  1: html element, 2: uniq ID, 3: color, 4: size, 5: speed, 6: initial x coord, 7: initial y coord, 8: initial direction, 9: swing size  
-      dots[variableName] = new DotDrawer('container', id, 'blue', 5, Math.floor(Math.random() * 7) + 3, i * 6 + Math.floor(Math.random() * 201) + 200, j * 7 + Math.floor(Math.random() * 201) - 100, direction, 200 + Math.floor(Math.random() * 801));
+      dots[variableName] = new DotDrawer('container', id, 'blue', 5, Math.floor(Math.random() * 7) + 3, i * 1 + Math.floor(Math.random() * 50) + 50, j * 1 + Math.floor(Math.random() * 50) - 50, direction, 50 + Math.floor(Math.random() * 200));
       dots[variableName].flow()
       id++;
       direction ? direction = false : direction = true;
