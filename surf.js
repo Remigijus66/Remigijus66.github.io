@@ -87,7 +87,7 @@ const emitDots = () => {
     for (let i = 40; i <= 300; i += 50) {
       const variableName = 'dot' + id;
       // props:  1: html element, 2: uniq ID, 3: color, 4: size, 5: speed, 6: initial x coord, 7: initial y coord, 8: initial direction, 9: swing size  
-      dots[variableName] = new DotDrawer('container', id, 'blue', 5, Math.floor(Math.random() * 7) + 3, i * 1 + Math.floor(Math.random() * 50) + 50, j * 1 + Math.floor(Math.random() * 50) - 50, direction, 50 + Math.floor(Math.random() * 200));
+      dots[variableName] = new DotDrawer('container', id, 'blue', 5, Math.floor(Math.random() * 7) + 3, i * 1 + Math.floor(Math.random() * 30) , j * 1 + Math.floor(Math.random() * 30) - 50, direction, 50 + Math.floor(Math.random() * 100));
       dots[variableName].flow()
       id++;
       direction ? direction = false : direction = true;
