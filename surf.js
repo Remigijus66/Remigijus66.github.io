@@ -2,11 +2,6 @@ class DotDrawer {
   static instances = [];
   constructor(containerId, dotId, dotColor, dotSize, wind, x, y, right, width) {
     this.container = document.getElementById(containerId);
-    if (!this.container) {
-      console.error(`Container element with id '${containerId}' not found.`);
-      return;
-    }
-
     this.dot = document.createElement('div');
     this.dot.id = `${dotId}`;
     this.dot.style.width = `${dotSize}px`;
@@ -15,7 +10,6 @@ class DotDrawer {
     this.dot.style.backgroundColor = dotColor;
     this.dot.style.position = 'absolute';
     this.container.appendChild(this.dot);
-
     this.dotColor = dotColor;
     this.dotSize = dotSize;
     this.wind = wind
@@ -26,6 +20,21 @@ class DotDrawer {
     this.width = width
     this.endX = this.x + this.width * (this.right ? 1 : -1)
     this.forward = 1
+
+    document.addEventListener('mousemove', this.handleMouseMove);
+
+  }
+  handleMouseMove = (e) => {
+    // Get mouse coordinates
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+
+    // Calculate distance from the mouse cursor
+    const distance = Math.sqrt((this.x - mouseX) ** 2 + (this.y - mouseY) ** 2);
+    if (distance <= 50) {
+      this.y = this.y - 1000;
+      setTimeout(() => (this.y = this.y + 1000), 7000)
+    }
   }
 
   drawDot = () => {
